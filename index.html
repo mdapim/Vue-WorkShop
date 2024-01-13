@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <!-- using a vue directive {v-} the v-for direct works for the below  -->
+                <li v-for="(page, index) in pages" class="nav-item active" :key="index">
+                    <!-- Free to use Javascript expressions within the curly braces
+                    We can use another vue directive to bind data to an attribute, the shorthand is :href
+                    -->
+                    <a class="nav-link" v-bind:href="page.link.url" :title="`This link goes to the ${page.link.text}`"
+                        @click.prevent="activePage = index">{{page.link.text}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content" class="container">
+        <h1> {{pages[activePage].pageTitle}} </h1>
+        <p>{{pages[activePage].content}}</p>
+    </div>
+
+    <script>
+
+        Vue.createApp({ // creata a vue instance
+            data() { // similar to state in react, supply options object that defines data
+                return {
+                    activePage: 0,
+                    pages: [
+                        {
+                            pageTitle: 'This is the Home Page',
+                            content: 'this is the home content',
+                            link: { text: 'Home', url: 'index.html' }
+                        },
+                        {
+                            pageTitle: 'This is the About Page',
+                            content: 'All about us',
+                            link: { text: 'About', url: 'About.html' }
+                        },
+                        {
+                            pageTitle: 'This is the Contact Page',
+                            content: 'Get in touch with us now',
+                            link: { text: 'Contact', url: 'Contact.html' }
+                        }
+                    ]
+                }
+            }
+        }).mount('body') // mounting applications to element with body affects the whole page, we can use the elements e.g. nav or an id for this
+        // Use of element or ID is done when using multiple vue instances
+    </script>
+</body>
+
+</html>
