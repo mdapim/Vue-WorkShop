@@ -2,16 +2,19 @@
 	{
 		"pageTitle": "This is the Home Page",
 		"content": "this is the home content",
-		"link": { "text": "Home", "url": "index.html" }
+		"link": { "text": "Home", "url": "index.html" },
+		"published": true
 	},
 	{
 		"pageTitle": "This is the About Page",
 		"content": "All about us",
-		"link": { "text": "About", "url": "About.html" }
+		"link": { "text": "About", "url": "About.html" },
+		"published": true
 	},
 	{
 		"pageTitle": "This is the Contact Page",
 		"content": "Get in touch with us now",
-		"link": { "text": "Contact", "url": "Contact.html" }
+		"link": { "text": "Contact", "url": "Contact.html" },
+		"published": true
 	}
 ]

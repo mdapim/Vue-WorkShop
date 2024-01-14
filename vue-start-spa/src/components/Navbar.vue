@@ -17,7 +17,10 @@
 			<ul class="navbar-nav">
 				<!-- using a vue directive {v-} the v-for direct works for the below  -->
 
-				<li v-for="(page, index) in pages" class="nav-item active" :key="index">
+				<li
+					v-for="(page, index) in publishedPages"
+					class="nav-item active"
+					:key="index">
 					<!-- Free to use Javascript expressions within the curly braces
                     We can use another vue directive to bind data to an attribute, the shorthand is :href
                     -->
@@ -98,6 +101,9 @@
 					"navbar-light": !this.useDarkNav,
 					"bg-light": !this.useDarkNav,
 				};
+			},
+			publishedPages() {
+				return this.pages.filter((p) => p.published);
 			},
 		},
 		methods: {

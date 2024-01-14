@@ -22,8 +22,9 @@
 	};
 </script>
 
-<!-- Add style elements CSS -->
-<style>
+<!-- Add style elements CSS, this is applied to all files globally -->
+<!-- Unless we add the style scoped attribute down below, this allows you to use the same class names -->
+<style scoped>
 	.emphasize {
 		text-decoration: underline !important;
 	}
