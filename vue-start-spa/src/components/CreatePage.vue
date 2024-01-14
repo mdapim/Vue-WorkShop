@@ -91,6 +91,14 @@
 					alert("Please fill in all the fields.");
 					return;
 				}
+
+				// $ states its a public property, camelCase for this
+				this.$emit("pageCreated", {
+					pageTitle: this.pageTitle,
+					content: this.pageContent,
+					link: { text: this.linkText, url: this.linkURL },
+					published: this.published,
+				});
 				this.pageCreated({
 					pageTitle: this.pageTitle,
 					content: this.pageContent,

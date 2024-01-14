@@ -15,21 +15,14 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<!-- using a vue directive {v-} the v-for direct works for the below  -->
-
-				<li
+				<nav-link
 					v-for="(page, index) in publishedPages"
 					class="nav-item active"
-					:key="index">
-					<!-- Free to use Javascript expressions within the curly braces
-                    We can use another vue directive to bind data to an attribute, the shorthand is :href
-                    -->
-					<nav-link
-						:page="page"
-						:isActive="activePage == index"
-						@click.prevent="changeActivePage(index)">
-					</nav-link>
-				</li>
+					:key="index"
+					:index="index"
+					:page="page"
+					:isActive="activePage == index">
+				</nav-link>
 			</ul>
 		</div>
 
@@ -84,7 +77,7 @@
 		created() {
 			this.getThemeSetting();
 		},
-		props: ["pages", "activePage", "changeActivePage"],
+		props: ["pages", "activePage"],
 		data() {
 			return {
 				theme: "dark",
