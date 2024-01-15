@@ -59,6 +59,7 @@
 <script>
 	export default {
 		// we can declare an event by using the emit option
+		// events don't have to be declared however this can be removed and still function useful for validation
 		// can be set up as an array emits: ["pageCreated "] or as an object below
 		emits: {
 			pageCreated({ pageTitle, content, link, published }) {
@@ -101,8 +102,8 @@
 					return;
 				}
 
-				// $ states its a public property, camelCase for this
-				// we are creating a custom event for this emits the event
+				// $ states its a public property
+				// we are creating a custom event for this emits the event and supply the information involved with the event
 				this.$emit("pageCreated", {
 					pageTitle: this.pageTitle,
 					content: this.pageContent,
@@ -119,6 +120,7 @@
 		},
 		// computed property return a value using existing data, it does not mutate
 		// we use watchers to watch for property changes and gives us the ability to mutate our states
+		// emitting events only bubbles up to the parent element so can only be listened to by App
 		watch: {
 			pageTitle(newTitle, oldTitle) {
 				if (this.linkText == oldTitle) {

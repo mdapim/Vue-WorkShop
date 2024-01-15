@@ -20,9 +20,17 @@
 					class="nav-item active"
 					:key="index"
 					:index="index"
-					:page="page"
-					:isActive="activePage == index">
+					:page="page">
 				</nav-link>
+
+				<li>
+					<router-link
+						to="/pages/create"
+						active-class="active emphasize"
+						class="nav-link">
+						Create Page
+					</router-link>
+				</li>
 			</ul>
 		</div>
 
@@ -76,13 +84,15 @@
 		},
 		created() {
 			this.getThemeSetting();
+
+			this.pages = this.$pages.getAllPages();
 		},
-		props: ["pages", "activePage"],
 		data() {
 			return {
 				theme: "dark",
 				setAlert: true,
 				useDarkNav: true,
+				pages: [],
 			};
 		},
 

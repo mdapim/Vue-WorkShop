@@ -93,6 +93,7 @@
 				}
 
 				// $ states its a public property, camelCase for this
+				// we are creating a custom event rather than using page created below
 				this.$emit("pageCreated", {
 					pageTitle: this.pageTitle,
 					content: this.pageContent,
