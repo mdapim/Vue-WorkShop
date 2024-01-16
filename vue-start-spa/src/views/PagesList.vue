@@ -1,29 +1,31 @@
 <template>
-	<h4>Pages</h4>
-	<div class="text-end">
-		<router-link to="/pages/create" class="btn btn-primary btn-sm">
-			Create Page
-		</router-link>
+	<div>
+		<h4>Pages</h4>
+		<div class="text-end">
+			<router-link to="/pages/create" class="btn btn-primary btn-sm">
+				Create Page
+			</router-link>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>link Text</th>
+					<th>Is Published</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					v-for="(page, index) in $pages.getAllPages()"
+					:key="index"
+					@click="goToPage(index)">
+					<td>{{ page.pageTitle }}</td>
+					<td>{{ page.link.text }}</td>
+					<td>{{ page.published ? "yes" : "no" }}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>link Text</th>
-				<th>Is Published</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				v-for="(page, index) in $pages.getAllPages()"
-				:key="index"
-				@click="goToPage(index)">
-				<td>{{ page.pageTitle }}</td>
-				<td>{{ page.link.text }}</td>
-				<td>{{ page.published ? "yes" : "no" }}</td>
-			</tr>
-		</tbody>
-	</table>
 </template>
 
 <script setup>

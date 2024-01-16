@@ -1,7 +1,9 @@
 <template>
 	<!-- // changed to data counter due to reactive -->
-	<p>{{ data.counter }}</p>
-	<button @click.prevent="click">test me</button>
+	<div>
+		<p>{{ data.counter }}</p>
+		<button @click.prevent="click">test me</button>
+	</div>
 </template>
 
 <script setup>
