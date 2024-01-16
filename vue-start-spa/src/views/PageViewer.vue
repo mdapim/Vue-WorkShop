@@ -10,6 +10,8 @@
 	// alternative to using v-if
 	export default {
 		props: ["index"],
+		// inject keys in this becomes a property in the component
+		inject: ["$pages"],
 		// props: ["pageTitle", "pageContent"], // changing this to an object
 		// props: {
 		// 	page: {

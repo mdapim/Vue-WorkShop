@@ -25,10 +25,10 @@
 
 				<li>
 					<router-link
-						to="/pages/create"
+						to="/pages"
 						active-class="active emphasize"
 						class="nav-link">
-						Create Page
+						Page List
 					</router-link>
 				</li>
 			</ul>
@@ -82,10 +82,23 @@
 		components: {
 			NavLink,
 		},
+		inject: ["$pages", "$bus"],
 		created() {
 			this.getThemeSetting();
 
 			this.pages = this.$pages.getAllPages();
+
+			this.$bus.$on("page-updated", () => {
+				this.pages = [...this.$pages.getAllPages()];
+			});
+
+			this.$bus.$on("page-created", () => {
+				this.pages = [...this.$pages.getAllPages()];
+			});
+
+			this.$bus.$on("page-deleted", () => {
+				this.pages = [...this.$pages.getAllPages()];
+			});
 		},
 		data() {
 			return {
